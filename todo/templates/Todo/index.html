@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online ToDo List</title>
+    <!-- <style>
+        ::placeholder {
+            opacity: 0.5;
+        }
+    </style> -->
+</head>
+
+<body>
+    <center>
+
+        <h1>ToDo</h1>
+
+        <div class="container">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{form.work}}
+                <button class="submit" id="submit" type="submit"> Submit </button>
+
+            </form>
+        </div>
+
+        {% for i in td %}
+        <div class="container">
+            <br> {{i}} <br>
+        </div>
+        {% endfor %}
+
+    </center>
+</body>
+
+</html>
