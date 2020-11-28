@@ -5,11 +5,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online ToDo List</title>
-    <!-- <style>
-        ::placeholder {
-            opacity: 0.5;
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- custom css -->
+
+    <style>
+        a {
+            text-decoration: none;
+            color: white;
+            outline: none;
         }
-    </style> -->
+
+        button {
+            text-decoration: none;
+        }
+
+        body {
+            background-color: rgb(227, 252, 182);
+        }
+
+        input {
+            position: relative;
+            top: 10rem;
+            width: 70%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            font-size: 20px;
+            border: none;
+        }
+
+        .submit {
+            position: relative;
+            top: 10rem;
+            padding-right: 3rem;
+            padding-left: 3rem;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 50px;
+            font-size: 20px;
+        }
+
+        span {
+            position: relative;
+            top: 10rem;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        strike {
+            position: relative;
+            top: 10rem;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        .e {
+            position: relative;
+            top: 10rem;
+            margin-left: 3rem;
+        }
+
+        .d {
+            position: relative;
+            top: 10rem; 
+            margin-left: 1rem;
+
+        }
+    </style>
+
 </head>
 
 <body>
@@ -17,22 +87,31 @@
 
         <h1>ToDo</h1>
 
-        <div class="container">
+        <div class="ifield">
             <form method="POST" action="">
                 {% csrf_token %}
-                {{form.work}}
-                <button class="submit" id="submit" type="submit"> Submit </button>
+                <div class="work">{{form.work}}</div>
+                <button class="submit btn btn-success" id="submit" type="submit">Submit</button>
 
             </form>
         </div>
-
+        <br><br><br>
         {% for i in td %}
         <div class="container">
-            <br> {{i}} <br>
+            {% if i.completion_Status == True %}
+            <strike>{{i}}</strike>
+            {% else %}
+            <span>{{i}}</span>
+            {% endif %}
+            <button class="e btn btn-info"><a href="{% url 'edit' i.id %}"> Edit </a></button>
+            <button class="d btn btn-danger"><a href="{% url 'delete' i.id %}"> Delete </a></button> <br> <br>
         </div>
         {% endfor %}
 
     </center>
+
+
+
 </body>
 
 </html>
