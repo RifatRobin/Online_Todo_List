@@ -80,21 +80,46 @@
             margin-left: 1rem;
 
         }
+
+        .ttl {
+            position: relative;
+            left: 150px;
+        }
+
+        .r {
+            position: relative;
+            right: 50px;
+            top: 20px;
+        }
+
+        .l {
+            position: relative;
+            right: 40px;
+            top: 20px;
+        }
+
+        h1 {
+            font-family: sans-serif;
+            color: rgb(90, 16, 158);
+
+        }
     </style>
 
 </head>
 
 <body>
     <center>
+        <h1 class="col-md-10 ttl">ToDo</h1>
+        <a href="#"><button class="r btn btn-info col-sm-1" type="button">Registration</button></a>
+        <a href="#"><button class="l btn btn-success col-sm-1" type="button">Login</button></a>
+    </center>
 
-        <h1>ToDo</h1>
-
+    <center>
         <div class="ifield">
             <form method="POST" action="">
                 {% csrf_token %}
                 <div class="work">{{form.work}}</div>
                 <button class="submit btn btn-success" id="submit" type="submit">Submit</button>
-
             </form>
         </div>
         <br><br><br>
@@ -109,9 +134,7 @@
             <button class="d btn btn-danger"><a href="{% url 'delete' i.id %}"> Delete </a></button> <br> <br>
         </div>
         {% endfor %}
-
     </center>
-
 
 
 </body>
