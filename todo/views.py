@@ -29,9 +29,18 @@ def edit(request, pk):
     eContext = {'etd': etd, 'form': form}
     return render(request, "Todo/edit.html", eContext)
 
+
 def delete(request, pk):
-    dtd=TodoList.objects.get(id=pk)
-    if request.method=="POST":
+    dtd = TodoList.objects.get(id=pk)
+    if request.method == "POST":
         dtd.delete()
         return redirect('/')
-    return render(request,"Todo/delete.html",{'dtd':dtd})
+    return render(request, "Todo/delete.html", {'dtd': dtd})
+
+
+def register(request):
+    return render(request, "Todo/register.html")
+
+
+def login(request):
+    return render(request, "Todo/login.html")
