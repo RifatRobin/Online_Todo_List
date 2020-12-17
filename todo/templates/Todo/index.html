@@ -109,14 +109,18 @@
 
 <body>
     <center>
-        <h1 class="col-md-10 ttl">ToDo</h1>
+        <h1 class="col-md-10 ttl">{{user.username}}'s ToDo</h1>
+        {% if user.is_authenticated %}
+        <a href="logout"><button class="l btn btn-danger col-sm-1" type="button">Logout</button></a>
+        {% else %}
         <a href="reg"><button class="r btn btn-info col-sm-1" type="button">Registration</button></a>
         <a href="/"><button class="l btn btn-success col-sm-1" type="button">Login</button></a>
+        {% endif %}
     </center>
 
     <center>
         <div class="ifield">
-            <form method="POST" action="">
+            <form method="POST" action="home">
                 {% csrf_token %}
                 <div class="work">{{form.work}}</div>
                 <button class="submit btn btn-success" id="submit" type="submit">Submit</button>

@@ -7,5 +7,5 @@ urlpatterns = [
     path('delete/<str:pk>/', views.delete, name="delete"),
     path('reg', views.register, name="register"),
     path('', views.login, name="login"),
-    # path('logout', views.logout, name="logout"),
+    path('logout', views.logout, name="logout"),
 ]

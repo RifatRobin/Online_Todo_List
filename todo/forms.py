@@ -7,4 +7,4 @@ from .models import *
 class TodoForm(forms.ModelForm):
     class Meta:
         model = TodoList
-        fields = "__all__"
+        exclude = ('creation_Time', 'user',)
